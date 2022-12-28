@@ -756,5 +756,5 @@ a {
 }
 
 .invalid {
-	border: 2px solid rgb(255, 11, 11);
+	border: 2px solid rgb(255, 11, 11)!important;
 }
