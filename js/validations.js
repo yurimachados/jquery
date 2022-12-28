@@ -1,37 +1,23 @@
 
 $(document).ready(function () {
-    
+
     /**
     * FUNÇÕES DE VALIDAÇÃO
-    *  1 - Validação de creenchimento
     *  2 - Validação de e-mail com regex
+    *  1 - Validação de preenchimento do nome
     */
-    
-    // Valida se os campos estão preenchidos
-    function validate(elem) {
-        if (elem.val() == '') {
-    
-            console.log('O campo ' + elem.attr('name') + ' é obrigatório')
-    
-            elem.addClass('invalid')
-    
-            return false;
-        } else {
-            elem.removeClass('invalid');
-        }
-    }
-    
+
     // validar se o email tem pelo menos um @ e um . após o @
     function validaEmail(email) {
-    
+
         var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
+
         return regex.test(String(email).toLowerCase())
     }
-    
+
     //Valida o tamanho do nome, se é maior de 2 caracteres
     function validaNome(nome) {
-    
+
         if (nome.length < 2) {
             return false
         } else {
@@ -67,34 +53,80 @@ $(document).ready(function () {
     })
 
 
+    /**
+     * ### NOME
+     */
 
-
+    // Validação de nome
     $('body').on('blur', '#nome', function () {
 
         if (validaNome($(this).val()) == false) {
             $(this).addClass('invalid');
+            $('#helpNome').removeClass('text-muted')
         } else {
             $(this).removeClass('invalid')
+            $('#helpNome').addClass('text-muted')
         }
     })
 
+    /**
+     * ### E-MAIL
+     */
+
+    // Validação de e-mail
     $('body').on('blur', '#email', function () {
 
         if (validaEmail($(this).val()) == false) {
             $(this).addClass('invalid')
+            $('#helpEmail').removeClass('text-muted')
         } else {
             $(this).removeClass('invalid')
+            $('#helpEmail').addClass('text-muted')
         }
     })
 
+    /**
+     * ### TELEFONE
+     */
+
+    // Máscara de telefone
+    $('body').on('click', '#phone', function (e) {
+        $(this).mask('(00)00000-0000')
+    })
+    // Validação de telefone
+    $('body').on('blur', '#phone', function (e) {
+        if ($(this).val() < 12) {
+            $(this).addClass('invalid')
+            $('#helpPhone').removeClass('text-muted')
+        } else {
+            $(this).removeClass('invalid')
+            $('#helpPhone').addClass('text-muted')
+        }
+    })
+
+    /**
+     * DATA
+     */
+    
+    // Adicionar máscara e instanciar o datepicker
+    $('body').on('click', '#date', function (e) {
+        $(this).datepicker()
+        $(this).mask('00/00/0000')
+    })
+
+    /**
+     * Validação ao fazer o submit 
+     */
     $('body').on('submit', '.modal-body .form', function (e) {
 
         e.preventDefault();
 
+        // Campos obrigatórios
         const inputNome = $('#nome')
         const inputEmail = $('#email')
+        const inputTelefone = $('#phone')
 
-        if (inputEmail.hasClass('invalid') || inputNome.hasClass('invalid')) {
+        if (inputEmail.hasClass('invalid') || inputNome.hasClass('invalid') || inputTelefone.hasClass('invalid')) {
             alert('Verificar campos obrigatórios')
             return false;
         } else {

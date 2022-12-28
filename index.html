@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./vendor/owl/css/owl.css">
     <link rel="stylesheet" href="./vendor/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="./vendor/jquery-ui-ligth/jquery-ui.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>jQuery</title>
+    <title>WebStore</title>
 </head>
 <body>
     
@@ -227,25 +228,24 @@
         <!-- Modal Body -->
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
         <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalTitleId">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        
 
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="contato" class="visually-hidden">
+
+            <div style="margin-bottom: 15px;">
+                <p>Por favor, preencha o formulário abaixo com seu nome, e-mail e também deixe uma mensagem. Estaremos respondendo o mais breve possível.</p>
+            </div>
 
             <form action="post" class="form">
 
@@ -265,6 +265,30 @@
                     </small>
                 </div>
 
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Telefone</label>
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Digite seu telefone" aria-describedby="helpPhone">
+                    <small id="helpPhone" class="text-muted">
+                      Digite um telefone válido!
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="date" class="form-label">Data</label>
+                    <input type="text" name="date" id="date" class="form-control" placeholder="Digite seu data" aria-describedby="helpDate">
+                    <small id="helpDate" class="text-muted">
+                      Insira uma data
+                    </small>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mensagem*</label>
+                    <textarea type="text" name="message" id="message" class="form-control" placeholder="Escreva uma mensagem" aria-describedby="helpMessage">
+                    </textarea>
+                </div>
+
+                <p style="margin-bottom: 5px;">Campos com <strong>*</strong> são opcionais</p>
                 <button type="submit" class="btn btn-primary">Enviar</button>
 
             </form>
@@ -273,10 +297,19 @@
         
         <div id="sobre" class="visually-hidden">
 
-            <h2>Sobre</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quaerat enim maiores repellendus consequatur expedita eos, temporibus esse mollitia cupiditate nostrum delectus repudiandae! Deleniti et illo autem suscipit eius perspiciatis.</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quaerat enim maiores repellendus consequatur expedita eos, temporibus esse mollitia cupiditate nostrum delectus repudiandae! Deleniti et illo autem suscipit eius perspiciatis.</p>
-            
+            <h4>Nossa História</h4>
+            <p>A Webstore é uma loja de roupas que foi criada com o objetivo de oferecer moda de alta qualidade a preços acessíveis. Desde o início, a Webstore tem se destacado pelo seu estilo único e pelo compromisso com a satisfação do cliente.</p><br>
+            <p>Nos últimos anos, a Webstore vem crescendo rapidamente graças à sua seleção cuidada de roupas elegantes e atemporais. Além de oferecer uma ampla variedade de estilos e marcas, a Webstore também tem um programa de fidelidade que recompensa seus clientes mais fiéis. A Webstore acredita que a moda deve ser acessível a todos, e por isso trabalha constantemente para oferecer as melhores opções de compra possíveis.</p><br>
+            <p>Além disso, a Webstore se preocupa com o impacto ambiental de suas operações e trabalha com fornecedores que compartilham essa preocupação. A Webstore é uma loja que se orgulha de oferecer moda de qualidade a preços acessíveis, enquanto também preserva o meio ambiente para as gerações futuras.</p>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-6">
+                    <button type="button" class="btn btn-primary">Saber mais</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-primary" >Contato</button>
+                </div>
+            </div>
         </div>
 
 
@@ -284,6 +317,8 @@
         <script src="./vendor/jquery/jquery-3.6.0.min.js"></script>
         <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="./vendor/owl/js/owl.js"></script>
+        <script src="./vendor/jquery-mask/dist/jquery.mask.min.js"></script>
+        <script src="./vendor/jquery-ui-ligth/jquery-ui.min.js"></script>
         <script src="./js/custom.js"></script>
         <script src="./js/validations.js"></script>
     </body>
