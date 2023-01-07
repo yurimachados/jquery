@@ -21,7 +21,13 @@ import image from 'gulp-images';
 
 function tarefasCSS(cb){
 
-    return gulp.src('./vendor/**/*.css')
+    return gulp.src([
+        './node_modules/bootstrap/dist/js/bootstrap.css',
+        './vendor/owl/css/owl.css',
+        "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+        './vendor/jquery-ui-ligth/jquery-ui.min.css',
+        "./vendor/jquery-ui-ligth/jquery-ui.css"
+    ])
         .pipe(concat('libs.css'))
         .pipe(cssmin())
         .pipe(rename({suffix: '.min'})) // libs.min.css
@@ -40,7 +46,7 @@ function tarefasJS(){
 
 function tarefasImagem(){
 
-    return gulp.src('./src/images/**')
+    return gulp.src('./src/images/*')
         .pipe(image({
             pngquant: true,
             optipng: false,
