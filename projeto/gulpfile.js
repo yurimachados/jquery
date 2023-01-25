@@ -16,13 +16,13 @@ import concat from 'gulp-concat';
 import cssmin from 'gulp-cssmin';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
-import image from 'gulp-images';
+import imagemin from 'gulp-imagemin';
 
 
-function tarefasCSS(cb){
+function tarefasCSS(cb) {
 
     return gulp.src([
-        './node_modules/bootstrap/dist/js/bootstrap.css',
+        './node_modules/bootstrap/dist/css/bootstrap.css',
         './vendor/owl/css/owl.css',
         "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
         './vendor/jquery-ui-ligth/jquery-ui.min.css',
@@ -30,12 +30,12 @@ function tarefasCSS(cb){
     ])
         .pipe(concat('libs.css'))
         .pipe(cssmin())
-        .pipe(rename({suffix: '.min'})) // libs.min.css
+        .pipe(rename({ suffix: '.min' })) // libs.min.css
         .pipe(gulp.dest('./dist/css'))
 
 }
 
-function tarefasJS(){
+function tarefasJS() {
 
     return gulp.src('./vendor/**/*.js')
         .pipe(concat('libs.js'))
@@ -44,10 +44,10 @@ function tarefasJS(){
         .pipe(gulp.dest('./dist/js'))
 }
 
-function tarefasImagem(){
+function tarefasImagem() {
 
     return gulp.src('./src/images/*')
-        .pipe(image({
+        .pipe(imagemin({
             pngquant: true,
             optipng: false,
             zopflipng: true,
