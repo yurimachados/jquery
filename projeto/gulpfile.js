@@ -12,7 +12,7 @@
 // Import que o ECMAScript reconhece.
 
 import gulp from 'gulp';
-const { series } = gulp
+const { series, parallel } = gulp
 import concat from 'gulp-concat';
 import cssmin from 'gulp-cssmin';
 import rename from 'gulp-rename';
@@ -20,8 +20,10 @@ import uglify from 'gulp-uglify';
 import imagemin from 'gulp-imagemin';
 import htmlmin from 'gulp-htmlmin';
 import babel from 'gulp-babel';
+import browserSync from 'browser-sync';
 
-
+browserSync.create()
+const reload = browserSync.reload
 
 function tarefasCSS(cb) {
 
@@ -91,6 +93,17 @@ function tarefasHTML(callback){
     return callback();
 }
 
+gulp.task('serve', function () {
+
+    browserSync.init({
+        server: {
+            baseDir: './dist',
+        }
+    })
+    gulp.watch('./src/**/*').on('change', process)
+    gulp.watch('./dist/**/*').on('change', reload)
+})
+
 // O ensinado no curso.
 
 // exports.styles = tarefasCSS
@@ -98,7 +111,9 @@ function tarefasHTML(callback){
 // exports.images = tarefasImagem
 
 // Esse é o export que foi possivel com o ECMAScript.
-export default series(tarefasHTML, tarefasJS, tarefasCSS) 
+const process = parallel(tarefasHTML, tarefasJS, tarefasCSS) 
+
+export default process
 
 export const styles = tarefasCSS;
 export const scripts = tarefasJS;
