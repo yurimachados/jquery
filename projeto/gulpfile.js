@@ -104,14 +104,13 @@ gulp.task('serve', function () {
     gulp.watch('./dist/**/*').on('change', reload)
 })
 
-// O ensinado no curso.
-
-// exports.styles = tarefasCSS
-// exports.scripts = tarefasJS
-// exports.images = tarefasImagem
+function end(cb){
+    console.log('done')
+    return cb()
+}
 
 // Esse é o export que foi possivel com o ECMAScript.
-const process = parallel(tarefasHTML, tarefasJS, tarefasCSS) 
+const process = parallel(tarefasHTML, tarefasJS, tarefasCSS, end) 
 
 export default process
 
